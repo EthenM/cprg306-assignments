@@ -45,21 +45,6 @@ export default function NewItem() {
     const [quantity, setQuantity] = useState(defualtQuantity);
     const [name, setName] = useState(defaultName);
     const [category, setCategory] = useState(defaultCategory);
-
-    //#region Category Functions
-    
-    /**
-     * Handles changes in the category select input
-     * @param {Event} event 
-     */
-    const HandleCategorySelectChange = (event) => {
-
-        const categoryChosen = Object.keys(CATEGORIES)[event.target.value]
-
-        setCategory(CATEGORIES[categoryChosen])
-    }
-
-    //#endregion
     
 
     //#region Quantity Functions
@@ -174,7 +159,7 @@ export default function NewItem() {
                     <select
                         value={category.val}
                         // The value in the event will be val. this is a 0 based index of the category in the enum.
-                        onChange={HandleCategorySelectChange}
+                        onChange={(event) => setCategory(CATEGORIES[Object.keys(CATEGORIES)[event.target.value]])}
                         className="p-3 bg-slate-950 border-blue-950 border rounded-lg w-full text-xl focus:bg-slate-800"
                     >
                         {/* Map the category keys, and create an option for each. */}
