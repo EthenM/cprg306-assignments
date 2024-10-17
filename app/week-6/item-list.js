@@ -25,10 +25,10 @@ const items = jsonItems //copied it here to get better intellisense
 const SORT_BY_STATES = Object.freeze({
     "NAME": 0,
     "CATEGORY": 1
-})
+});
 
 export default function ItemList() {
-    const [sortBy, setSortBy] = useState(SORT_BY_STATES.NAME)
+    const [sortBy, setSortBy] = useState(SORT_BY_STATES.NAME);
 
     //sort the items array
     const sortedItems = items.sort((a, b) => {
@@ -44,13 +44,13 @@ export default function ItemList() {
                 ? -1
                 :0;
 
-        return returnVal
+        return returnVal;
     })
 
     /**
      * Styles to apply to all of the buttons
      */
-    const buttonStyles = "px-3 rounded-md border-2 border-blue-950 capitalize"
+    const buttonStyles = "px-3 rounded-md border-2 border-blue-950 capitalize";
 
 
     return (
@@ -86,4 +86,4 @@ export default function ItemList() {
 
         </div>
     );
-}
+};
