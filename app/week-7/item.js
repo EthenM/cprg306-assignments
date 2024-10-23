@@ -1,7 +1,6 @@
-export default function Item({name, quantity, category, key}) {
+export default function Item({name, quantity, category}) {
     return (
         <div
-            key={key}
             className="border border-blue-950 bg-slate-950 rounded-xl min-w-72 size-fit min-h-40 m-2 hover:bg-slate-900"
         >
             <h3

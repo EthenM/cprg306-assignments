@@ -24,9 +24,10 @@ export default function ItemList({ items }) {
 
         //run the logic.
         //since strings might be coming around, find the value manually
-        returnVal = a[sortVal] > b[sortVal] 
+        //also ensure it is case insensitive.
+        returnVal = a[sortVal].toLowerCase() > b[sortVal].toLowerCase() 
             ? 1
-            : a[sortVal] < b[sortVal]
+            : a[sortVal].toLowerCase() < b[sortVal].toLowerCase()
                 ? -1
                 :0;
 

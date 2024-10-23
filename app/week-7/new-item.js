@@ -116,13 +116,10 @@ export default function NewItem({ toggleVisibilityFunc, addNewItem }) {
             const item = {
                 name: name,
                 quantity: quantity,
-                category: category.text //ensure the category is passed back as the string
+                category: category.text.toLowerCase() //ensure category is a lowercase string
             };
-        
-            console.dir(item);
 
             addNewItem(item);
-            alert("Added a new item:\n" + "Name: " + name + "\nQuantity: " + quantity + "\nCategory: " + category.text);
     
             //reset the state variables
             setName(defaultName);
