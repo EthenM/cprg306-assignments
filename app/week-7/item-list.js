@@ -1,7 +1,7 @@
 "use client"
 
 import Item from "./item";
-import { useState } from "react"
+import { useState } from "react";
 
 /**
  * Stores the different ways the objects could be sorted by
@@ -31,7 +31,7 @@ export default function ItemList({ items }) {
                 :0;
 
         return returnVal;
-    })
+    });
 
     /**
      * Styles to apply to all of the buttons
@@ -67,7 +67,8 @@ export default function ItemList({ items }) {
                         key={item.id}
                         name={item.name}
                         quantity={item.quantity}
-                        category={item.category}/>
+                        category={item.category}
+                    />
                 )}
             </div>
 

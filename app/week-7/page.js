@@ -7,7 +7,7 @@ import ShoppingList from "./shopping-list";
 export const metadata = {
     title: "Shopping List",
     description: "A shopping list"
-}
+};
 
 export default function Page() {
     return (
