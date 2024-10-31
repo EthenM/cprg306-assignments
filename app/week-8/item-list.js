@@ -39,7 +39,6 @@ export default function ItemList({ items, setSelectedItem }) {
      */
     const buttonStyles = "px-3 rounded-md border-2 border-blue-950 capitalize";
 
-
     return (
         <div>
             <div className="flex gap-4 p-3">
@@ -61,15 +60,16 @@ export default function ItemList({ items, setSelectedItem }) {
                     </button>
                 )}
             </div>
-            <div className="flex justify-center flex-wrap">
+            <div className="flex justify-center flex-wrap gap-2">
 
                 {items.map(item =>
-                    <Item
-                        key={item.id}
-                        name={item.name}
-                        quantity={item.quantity}
-                        category={item.category}
-                    />
+                    <div key={item.id} onClick={() => setSelectedItem(item.id)}>
+                        <Item
+                            name={item.name}
+                            quantity={item.quantity}
+                            category={item.category}
+                        />
+                    </div>
                 )}
             </div>
 

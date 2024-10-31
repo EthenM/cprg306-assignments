@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ItemList from "./item-list";
 import NewItem from "./new-item";
 import itemData from "./items.json";
@@ -25,6 +25,15 @@ export default function ShoppingList() {
     /**@type {ListItem[]} */
     const jsonItems = [...itemData];
     const [items, setItems] = useState(jsonItems);
+
+    useEffect(() => {
+
+        //if there is a selected item, open the modal
+        if (selectedItem != "") {
+            setMealIdeasOpen(true);
+        }
+        
+    }, [selectedItem]);
 
     const idLength = 16;
     const charactersForId = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -89,10 +98,19 @@ export default function ShoppingList() {
 
             {
                 mealIdeasOpen &&
-                <MealIdeas toggleVisibilityFunc={setterWrapper(setMealIdeasOpen)}/>
+                <MealIdeas
+                    toggleVisibilityFunc={() => [
+                        setMealIdeasOpen(prevVal => !prevVal),
+                        setSelectedItem("")
+                    ]}
+                    item={items.find(item => item.id == selectedItem).name}
+                />
             }
             
+
             <h1 className="text-6xl text-center mb-4 border-b border-b-blue-950 pt-3">Shopping List</h1>
+
+            <p>Selected item: {selectedItem ?? "None selected"}</p>
 
             <button
                 className="bg-slate-950 hover:bg-slate-800 active:bg-slate-700 py-2 px-4 rounded-md border-2 border-blue-950"
@@ -101,7 +119,10 @@ export default function ShoppingList() {
                 Add a New Item
             </button>
 
-            <ItemList items={items} setSelectedItem={setterWrapper(selectedItem)}/>
+            <ItemList
+                items={items}
+                setSelectedItem={(itemSelected) => setSelectedItem(itemSelected)}
+            />
         </div>
     );
 };
