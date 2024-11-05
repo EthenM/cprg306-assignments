@@ -110,8 +110,6 @@ export default function ShoppingList() {
 
             <h1 className="text-6xl text-center mb-4 border-b border-b-blue-950 pt-3">Shopping List</h1>
 
-            <p>Selected item: {selectedItem ?? "None selected"}</p>
-
             <button
                 className="bg-slate-950 hover:bg-slate-800 active:bg-slate-700 py-2 px-4 rounded-md border-2 border-blue-950"
                 onClick={setterWrapper(setNewItemOpen)}
