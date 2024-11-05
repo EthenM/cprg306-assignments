@@ -14,6 +14,7 @@ export default function MealIdeas({ toggleVisibilityFunc, item}) {
 
     const [mealIdeas, setMealIdeas] = useState([]);
     const [itemName, setItemName] = useState("");
+    const [selectedMealid, setSelectedMealId] = useState("");
 
 
     //TODO: might need to pass the selected item setter function into here as well,
@@ -66,7 +67,7 @@ export default function MealIdeas({ toggleVisibilityFunc, item}) {
 
                 {/* Modal Header */}
                 <div className="border-b border-b-blue-950 pt-2 flex justify-end">
-                    <h1 className="text-2xl text-center inline-block w-full">
+                    <h1 className="text-2xl text-center inline-block w-full pt-3">
                         Meal Ideas for <span className="capitalize">{itemName}</span>
                     </h1>
 
@@ -82,7 +83,12 @@ export default function MealIdeas({ toggleVisibilityFunc, item}) {
                             ? (
                                 <div className="overflow-y-auto max-h-96">
                                     {mealIdeas.map(idea => 
-                                        <MealCard key={idea.idMeal} meal={idea}/>
+                                        <MealCard
+                                            key={idea.idMeal}
+                                            meal={idea}
+                                            selectedMealId={selectedMealid}
+                                            setSelectedMealId={(newId) => setSelectedMealId(newId)}
+                                        />
                                     )}
                                 </div>
                             )
