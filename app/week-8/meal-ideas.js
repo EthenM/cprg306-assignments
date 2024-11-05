@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import MealCard from "./meal-card";
 
 /**
+ * The meal Ideas modal.
  * 
  * @param {Object} param0
  * @param {function()} param0.toggleVisibilityFunc toggles the visibility of the modal

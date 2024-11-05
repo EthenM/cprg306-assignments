@@ -1,10 +1,30 @@
+"use client"
+
 import { useState } from "react";
 
-
+/**
+ * Builds and returns a meal card to render to the meal-ideas modal
+ * 
+ * @param {Object} param0
+ * @param {Object} param0.meal The meal to render
+ * @param {String} param0.selectedMealId The currently selected meal's id
+ * @param {function(String)} param0.setSelectedMealId A function to set the selected meal id
+ * @returns A meal card to render
+ */
 export default function MealCard({ meal, selectedMealId, setSelectedMealId }) {
     const [mealDetails, setMealDetails] = useState({})
 
 
+    /**
+     * If no details exist in the mealDetails state variable, it will fetch the meal from
+     * https://www.themealdb.com/api/json/v1/1/lookup.php, with the parameter i as the meal id.
+     * it will then send it off to {@link filterDetails}, where the meal will be parsed and turned into
+     * a useable state and stored in mealDetails. the selectedMealId will also be set to this meal,
+     * causing all other (hopefully only one) cards to close.
+     * 
+     * If details do exist, the mealDetails will be cleared, causing the card to "collapse".
+     * The value in selectedMealId is cleared as well, as there are no selected meals.
+     */
     const getDetailsOrCollapse = () => {
         
         //if details already exist, remove them.
@@ -42,6 +62,12 @@ export default function MealCard({ meal, selectedMealId, setSelectedMealId }) {
 
     };
 
+    /**
+     * Builds the mealDetails object, by putting ingredients and measurements together,
+     * and adding the instructions.
+     * 
+     * @param {Object} details 
+     */
     const filterDetails = (details) => {
 
         //get the list of ingredients
